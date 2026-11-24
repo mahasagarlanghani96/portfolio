@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -11,26 +12,37 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
+    if (!isHome) {
+      setActiveSection("");
+      return;
+    }
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
       const sections = NAV_ITEMS.map((item) => item.href.replace("#", ""));
+      let found = false;
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
         if (el) {
           const rect = el.getBoundingClientRect();
           if (rect.top <= 100) {
             setActiveSection(sections[i]);
+            found = true;
             break;
           }
         }
       }
+      if (!found) setActiveSection("hero");
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     if (isMobileOpen) {
@@ -45,6 +57,10 @@ export function Header() {
 
   const handleNavClick = (href: string) => {
     setIsMobileOpen(false);
+    if (!isHome) {
+      window.location.href = "/" + href;
+      return;
+    }
     const id = href.replace("#", "");
     const el = document.getElementById(id);
     if (el) {

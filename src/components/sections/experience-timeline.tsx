@@ -40,8 +40,8 @@ export function ExperienceTimeline() {
       />
 
       <div ref={containerRef} className="relative mx-auto max-w-2xl">
-        {/* Animated gradient line */}
-        <div className="absolute left-6 top-0 h-full w-0.5 sm:left-8">
+        {/* Animated gradient line — centered at left 28px */}
+        <div className="absolute left-[27px] top-0 h-full w-0.5">
           <div className="h-full w-full bg-border/30 rounded-full" />
           <motion.div
             className="absolute left-0 top-0 w-full rounded-full"
@@ -64,18 +64,18 @@ export function ExperienceTimeline() {
                 transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                 className="relative pl-16 sm:pl-20"
               >
-                {/* Timeline node */}
+                {/* Timeline node — centered on the line at left 28px */}
                 <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 }}
-                  className="absolute left-3.5 top-3 sm:left-5.5"
-                  style={{ left: "18px" }}
+                  className="absolute top-4"
+                  style={{ left: "16px" }}
                 >
                   <div className="relative">
                     <div
-                      className="h-5 w-5 rounded-full border-[3px] bg-bg-primary sm:h-6 sm:w-6"
+                      className="h-6 w-6 rounded-full border-[3px] bg-bg-primary"
                       style={{ borderColor: color }}
                     />
                     <div
