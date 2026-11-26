@@ -128,3 +128,67 @@ export interface ReleaseCriteria {
   met: boolean;
   details: string;
 }
+
+export type MetricStatus = "pass" | "fail" | "warning";
+export type ThresholdDirection = "gte" | "lte";
+export type ReleaseDecision = "go" | "no-go";
+export type HealthStatus = "on-track" | "at-risk" | "critical";
+
+export interface ReleaseMetricDefinition {
+  id: string;
+  label: string;
+  unit: string;
+  placeholder: string;
+  description: string;
+  thresholdPass: number;
+  thresholdWarning: number;
+  direction: ThresholdDirection;
+  min?: number;
+  max?: number;
+  step?: number;
+}
+
+export interface ReleaseMetricResult {
+  id: string;
+  value: number;
+  status: MetricStatus;
+}
+
+export interface ReleaseEvaluationResult {
+  metrics: ReleaseMetricResult[];
+  decision: ReleaseDecision;
+  passCount: number;
+  failCount: number;
+  warningCount: number;
+  summary: string;
+}
+
+export interface HealthMetricDefinition {
+  id: string;
+  label: string;
+  unit: string;
+  placeholder: string;
+  description: string;
+  thresholdGreen: number;
+  thresholdYellow: number;
+  direction: ThresholdDirection;
+  min?: number;
+  max?: number;
+  step?: number;
+}
+
+export interface HealthMetricResult {
+  id: string;
+  value: number;
+  status: MetricStatus;
+}
+
+export interface HealthEvaluationResult {
+  metrics: HealthMetricResult[];
+  overallStatus: HealthStatus;
+  score: number;
+  passCount: number;
+  warningCount: number;
+  criticalCount: number;
+  summary: string;
+}

@@ -10,6 +10,7 @@ import { ExperienceTimeline } from "@/components/sections/experience-timeline";
 import { CaseStudiesPreview } from "@/components/sections/case-studies-preview";
 import { SkillsSection } from "@/components/sections/skills-section";
 import { ReleaseReadiness } from "@/components/interactive/release-readiness";
+import { ProjectHealth } from "@/components/interactive/project-health";
 import { ContactCTA } from "@/components/sections/contact-cta";
 
 export default function HomePage() {
@@ -34,6 +35,8 @@ export default function HomePage() {
         <CaseStudiesPreview />
         <div className="section-divider" />
         <ReleaseReadiness />
+        <div className="section-divider" />
+        <ProjectHealth />
         <div className="section-divider" />
         <ContactCTA />
       </div>

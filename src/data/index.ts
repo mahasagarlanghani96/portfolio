@@ -8,3 +8,11 @@ export {
   sampleReleaseCriteria,
   DEMO_DISCLAIMER,
 } from "./release-demo";
+export {
+  releaseMetricDefinitions,
+  RELEASE_DEMO_DISCLAIMER,
+} from "./release-metrics";
+export {
+  healthMetricDefinitions,
+  HEALTH_DEMO_DISCLAIMER,
+} from "./health-metrics";

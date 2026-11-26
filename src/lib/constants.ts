@@ -29,6 +29,7 @@ export const SECTION_IDS = {
   caseStudies: "case-studies",
   skills: "skills",
   releaseDemo: "release-demo",
+  projectHealth: "project-health",
   about: "about",
   contact: "contact",
 } as const;

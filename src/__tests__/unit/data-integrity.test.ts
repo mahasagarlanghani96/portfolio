@@ -5,6 +5,8 @@ import { skillGroups } from "@/data/skills";
 import { caseStudies } from "@/data/case-studies";
 import { expertiseTracks, lifecyclePhases } from "@/data/expertise";
 import { sampleReleaseMetrics, sampleReleaseCriteria } from "@/data/release-demo";
+import { releaseMetricDefinitions } from "@/data/release-metrics";
+import { healthMetricDefinitions } from "@/data/health-metrics";
 
 describe("data integrity", () => {
   describe("personalInfo", () => {
@@ -109,6 +111,78 @@ describe("data integrity", () => {
     it("has criteria with boolean met values", () => {
       sampleReleaseCriteria.forEach((c) => {
         expect(typeof c.met).toBe("boolean");
+      });
+    });
+  });
+
+  describe("releaseMetricDefinitions", () => {
+    it("has 6 definitions", () => {
+      expect(releaseMetricDefinitions).toHaveLength(6);
+    });
+
+    it("each has unique id", () => {
+      const ids = releaseMetricDefinitions.map((d) => d.id);
+      expect(new Set(ids).size).toBe(ids.length);
+    });
+
+    it("each has valid direction", () => {
+      releaseMetricDefinitions.forEach((d) => {
+        expect(["gte", "lte"]).toContain(d.direction);
+      });
+    });
+
+    it("thresholds are consistent with direction", () => {
+      releaseMetricDefinitions.forEach((d) => {
+        if (d.direction === "gte") {
+          expect(d.thresholdWarning).toBeLessThanOrEqual(d.thresholdPass);
+        } else {
+          expect(d.thresholdWarning).toBeGreaterThanOrEqual(d.thresholdPass);
+        }
+      });
+    });
+
+    it("each has non-empty required fields", () => {
+      releaseMetricDefinitions.forEach((d) => {
+        expect(d.label).toBeTruthy();
+        expect(d.unit).toBeTruthy();
+        expect(d.placeholder).toBeTruthy();
+        expect(d.description).toBeTruthy();
+      });
+    });
+  });
+
+  describe("healthMetricDefinitions", () => {
+    it("has 6 definitions", () => {
+      expect(healthMetricDefinitions).toHaveLength(6);
+    });
+
+    it("each has unique id", () => {
+      const ids = healthMetricDefinitions.map((d) => d.id);
+      expect(new Set(ids).size).toBe(ids.length);
+    });
+
+    it("each has valid direction", () => {
+      healthMetricDefinitions.forEach((d) => {
+        expect(["gte", "lte"]).toContain(d.direction);
+      });
+    });
+
+    it("thresholds are consistent with direction", () => {
+      healthMetricDefinitions.forEach((d) => {
+        if (d.direction === "gte") {
+          expect(d.thresholdYellow).toBeLessThanOrEqual(d.thresholdGreen);
+        } else {
+          expect(d.thresholdYellow).toBeGreaterThanOrEqual(d.thresholdGreen);
+        }
+      });
+    });
+
+    it("each has non-empty required fields", () => {
+      healthMetricDefinitions.forEach((d) => {
+        expect(d.label).toBeTruthy();
+        expect(d.unit).toBeTruthy();
+        expect(d.placeholder).toBeTruthy();
+        expect(d.description).toBeTruthy();
       });
     });
   });
