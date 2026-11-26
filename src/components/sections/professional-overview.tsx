@@ -16,6 +16,7 @@ import {
 import { motion, useInView } from "motion/react";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { GradientBlob } from "@/components/interactive/gradient-blob";
+import { TiltCard } from "@/components/interactive/tilt-card";
 
 const areas = [
   { icon: ShieldCheck, title: "QA Leadership", color: "#00E5FF" },
@@ -56,46 +57,18 @@ export function ProfessionalOverview() {
                 delay: i * 0.05,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              whileHover={{
-                y: -6,
-                scale: 1.03,
-                transition: { duration: 0.2 },
-              }}
-              className="group relative flex flex-col items-center gap-3 rounded-2xl border border-border bg-bg-card p-5 text-center transition-all hover:shadow-xl cursor-default"
-              style={{
-                "--hover-color": area.color,
-              } as React.CSSProperties}
             >
-              {/* Glow on hover */}
-              <div
-                className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                style={{
-                  background: `radial-gradient(circle at 50% 30%, ${area.color}12, transparent 70%)`,
-                }}
-              />
-
-              {/* Icon with colored background */}
-              <div
-                className="relative flex h-14 w-14 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
-                style={{ background: `${area.color}15` }}
-              >
-                <area.icon className="h-7 w-7" style={{ color: area.color }} />
+              <TiltCard className="flex flex-col items-center gap-3 p-5 text-center cursor-default" glowColor={area.color}>
                 <div
-                  className="absolute inset-0 rounded-xl opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-30"
-                  style={{ background: area.color }}
-                />
-              </div>
-
-              <span className="relative text-xs font-semibold text-text-primary group-hover:text-text-primary">
-                {area.title}
-              </span>
-
-              {/* Bottom accent line */}
-              <motion.div
-                className="absolute bottom-0 left-1/2 h-0.5 -translate-x-1/2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                style={{ background: area.color, width: "50%" }}
-                whileHover={{ width: "70%" }}
-              />
+                  className="relative flex h-14 w-14 items-center justify-center rounded-xl"
+                  style={{ background: `${area.color}15` }}
+                >
+                  <area.icon className="h-7 w-7" style={{ color: area.color }} />
+                </div>
+                <span className="text-xs font-semibold text-text-primary">
+                  {area.title}
+                </span>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

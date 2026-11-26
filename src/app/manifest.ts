@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
       "Senior QA Lead and Project Manager portfolio showcasing quality engineering and technical delivery expertise.",
     start_url: "/",
     display: "standalone",
-    background_color: "#0a0f1a",
+    background_color: "#0C1222",
     theme_color: "#06b6d4",
   };
 }

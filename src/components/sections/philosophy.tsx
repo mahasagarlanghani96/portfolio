@@ -90,11 +90,21 @@ export function PhilosophySection() {
               />
 
               <div className="relative">
-                <div
-                  className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg transition-transform duration-300 group-hover:scale-110"
-                  style={{ background: `${p.color}15` }}
-                >
-                  <p.icon className="h-5 w-5" style={{ color: p.color }} />
+                <div className="relative mb-3">
+                  <motion.div
+                    className="absolute inset-0 rounded-lg"
+                    style={{ background: p.color }}
+                    animate={{ scale: [1, 1.8, 1], opacity: [0.15, 0, 0.15] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
+                  />
+                  <motion.div
+                    className="relative flex h-10 w-10 items-center justify-center rounded-lg transition-transform duration-300 group-hover:scale-110"
+                    style={{ background: `${p.color}15` }}
+                    animate={{ scale: [1, 1.08, 1] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
+                  >
+                    <p.icon className="h-5 w-5" style={{ color: p.color }} />
+                  </motion.div>
                 </div>
                 <h3 className="mb-1.5 text-sm font-bold text-text-primary">
                   {p.title}

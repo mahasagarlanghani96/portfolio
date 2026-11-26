@@ -9,14 +9,13 @@ import { DeliveryLifecycle } from "@/components/interactive/delivery-lifecycle";
 import { ExperienceTimeline } from "@/components/sections/experience-timeline";
 import { CaseStudiesPreview } from "@/components/sections/case-studies-preview";
 import { SkillsSection } from "@/components/sections/skills-section";
-import { ReleaseReadiness } from "@/components/interactive/release-readiness";
-import { ProjectHealth } from "@/components/interactive/project-health";
+import { EstimationTools } from "@/components/interactive/estimation-tools";
 import { ContactCTA } from "@/components/sections/contact-cta";
 
 export default function HomePage() {
   return (
     <>
-      <FloatingParticles count={35} />
+      <FloatingParticles count={50} />
       <div className="noise-overlay relative z-10">
         <HeroSection />
         <div className="section-divider" />
@@ -34,9 +33,7 @@ export default function HomePage() {
         <div className="section-divider" />
         <CaseStudiesPreview />
         <div className="section-divider" />
-        <ReleaseReadiness />
-        <div className="section-divider" />
-        <ProjectHealth />
+        <EstimationTools />
         <div className="section-divider" />
         <ContactCTA />
       </div>

@@ -14,7 +14,7 @@ export function GradientBlob({
   return (
     <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
       <motion.div
-        className="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full opacity-[0.06]"
+        className="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] rounded-full opacity-[0.10]"
         style={{
           background: `radial-gradient(circle, ${colors[0]} 0%, transparent 70%)`,
           filter: "blur(80px)",
@@ -27,7 +27,7 @@ export function GradientBlob({
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute -bottom-[15%] -right-[10%] w-[50%] h-[50%] rounded-full opacity-[0.06]"
+        className="absolute -bottom-[15%] -right-[10%] w-[50%] h-[50%] rounded-full opacity-[0.10]"
         style={{
           background: `radial-gradient(circle, ${colors[1]} 0%, transparent 70%)`,
           filter: "blur(80px)",
@@ -40,7 +40,7 @@ export function GradientBlob({
         transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute top-[40%] left-[30%] w-[35%] h-[35%] rounded-full opacity-[0.04]"
+        className="absolute top-[40%] left-[30%] w-[35%] h-[35%] rounded-full opacity-[0.07]"
         style={{
           background: `radial-gradient(circle, ${colors[2]} 0%, transparent 70%)`,
           filter: "blur(60px)",

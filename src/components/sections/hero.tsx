@@ -2,7 +2,7 @@
 
 import { Mail, ArrowDown, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
-import { AnimatedCharacter } from "@/components/interactive/animated-character";
+import { ProfileImage } from "@/components/interactive/profile-image";
 import { TypingEffect } from "@/components/interactive/typing-effect";
 import { StatRing } from "@/components/interactive/stat-ring";
 import { MagneticButton } from "@/components/interactive/magnetic-button";
@@ -167,7 +167,7 @@ export function HeroSection() {
             transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="flex-shrink-0"
           >
-            <AnimatedCharacter />
+            <ProfileImage />
           </motion.div>
         </div>
 

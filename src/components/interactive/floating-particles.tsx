@@ -17,6 +17,8 @@ const COLORS = [
   [167, 139, 250],  // purple
   [244, 114, 182],  // pink
   [52, 211, 153],   // emerald
+  [251, 191, 36],   // amber
+  [251, 146, 60],   // orange
 ];
 
 export function FloatingParticles({ count = 40 }: { count?: number }) {
@@ -41,10 +43,10 @@ export function FloatingParticles({ count = 40 }: { count?: number }) {
     particlesRef.current = Array.from({ length: count }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      size: Math.random() * 2.5 + 0.5,
+      size: Math.random() * 3 + 0.5,
       speedX: (Math.random() - 0.5) * 0.4,
       speedY: (Math.random() - 0.5) * 0.4,
-      opacity: Math.random() * 0.4 + 0.1,
+      opacity: Math.random() * 0.5 + 0.15,
       colorIndex: Math.floor(Math.random() * COLORS.length),
     }));
 
@@ -72,8 +74,8 @@ export function FloatingParticles({ count = 40 }: { count?: number }) {
         const dy = mouse.y - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 150) {
-          const force = (150 - dist) / 150;
+        if (dist < 200) {
+          const force = (200 - dist) / 200;
           p.x -= dx * force * 0.02;
           p.y -= dy * force * 0.02;
         }
@@ -91,7 +93,7 @@ export function FloatingParticles({ count = 40 }: { count?: number }) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${(1 - d / 100) * 0.08})`;
+            ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${(1 - d / 100) * 0.15})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

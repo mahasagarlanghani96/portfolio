@@ -28,6 +28,42 @@ export function ContactCTA() {
     <Section id="contact" className="relative overflow-hidden">
       <GradientBlob colors={["#A78BFA", "#F472B6", "#00E5FF"]} />
 
+      {/* Floating sparkles */}
+      {[
+        { x: "8%", y: "15%", color: "#00E5FF", size: 6, dur: 7, delay: 0 },
+        { x: "92%", y: "25%", color: "#A78BFA", size: 5, dur: 9, delay: 1.5 },
+        { x: "15%", y: "80%", color: "#F472B6", size: 7, dur: 8, delay: 3 },
+        { x: "88%", y: "75%", color: "#34D399", size: 4, dur: 10, delay: 4 },
+        { x: "50%", y: "10%", color: "#FBBF24", size: 5, dur: 6, delay: 2 },
+        { x: "30%", y: "90%", color: "#00E5FF", size: 4, dur: 11, delay: 5 },
+        { x: "70%", y: "85%", color: "#A78BFA", size: 6, dur: 7, delay: 1 },
+      ].map((spark, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            left: spark.x,
+            top: spark.y,
+            width: spark.size,
+            height: spark.size,
+            background: spark.color,
+            boxShadow: `0 0 ${spark.size * 4}px ${spark.color}`,
+          }}
+          animate={{
+            y: [0, -20, 0, 15, 0],
+            x: [0, 10, -8, 5, 0],
+            opacity: [0.2, 0.8, 0.2, 0.6, 0.2],
+            scale: [1, 1.5, 1, 1.3, 1],
+          }}
+          transition={{
+            duration: spark.dur,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: spark.delay,
+          }}
+        />
+      ))}
+
       <div className="relative">
         <motion.div
           initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}

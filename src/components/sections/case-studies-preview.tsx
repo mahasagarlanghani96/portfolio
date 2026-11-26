@@ -6,6 +6,7 @@ import { ArrowRight, Folder } from "lucide-react";
 import { motion, useInView } from "motion/react";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { GradientBlob } from "@/components/interactive/gradient-blob";
+import { TiltCard } from "@/components/interactive/tilt-card";
 import { caseStudies } from "@/data";
 
 const cardColors = ["#00E5FF", "#A78BFA", "#F472B6"];
@@ -35,23 +36,11 @@ export function CaseStudiesPreview() {
               transition={{ duration: 0.6, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
             >
               <Link href={`/case-studies/${cs.slug}`} className="block h-full group">
-                <motion.div
-                  whileHover={{ y: -6, scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                  className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-bg-card p-6 transition-all hover:shadow-xl"
-                >
-                  {/* Top accent gradient */}
+                <TiltCard className="relative flex h-full flex-col p-6" glowColor={color}>
                   <div
-                    className="absolute top-0 left-0 right-0 h-1"
+                    className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
                     style={{ background: `linear-gradient(90deg, ${color}, ${color}60)`, opacity: 0.6 }}
                   />
-
-                  {/* Hover glow */}
-                  <div
-                    className="absolute -top-10 -right-10 h-28 w-28 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-15"
-                    style={{ background: color }}
-                  />
-
                   <div className="relative">
                     <span
                       className="mb-3 inline-block rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
@@ -80,7 +69,7 @@ export function CaseStudiesPreview() {
                       <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1.5" />
                     </span>
                   </div>
-                </motion.div>
+                </TiltCard>
               </Link>
             </motion.div>
           );

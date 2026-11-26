@@ -16,6 +16,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#case-studies" },
+  { label: "Tools", href: "#estimation" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -28,8 +29,7 @@ export const SECTION_IDS = {
   experience: "experience",
   caseStudies: "case-studies",
   skills: "skills",
-  releaseDemo: "release-demo",
-  projectHealth: "project-health",
+  estimation: "estimation",
   about: "about",
   contact: "contact",
 } as const;
